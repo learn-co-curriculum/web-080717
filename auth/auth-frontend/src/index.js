@@ -9,13 +9,12 @@ import { BrowserRouter as Router } from 'react-router-dom'
 // import './index.css';
 import App from './App';
 import usersReducer from './reducers/usersReducer'
+import locationReducer from './reducers/locationReducer'
 import registerServiceWorker from './registerServiceWorker';
 
-const rootReducer = combineReducers({ usersReducer })
+const rootReducer = combineReducers({ usersReducer, locationReducer })
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
-
-console.log("Redux store state: ", store.getState())
 
 ReactDOM.render(<Provider store={store}><Router><App /></Router></Provider>, document.getElementById('root'));
 registerServiceWorker();
