@@ -39,6 +39,6 @@
 ## Module 4
 
 - [Code](https://github.com/learn-co-students/web-080717)
-[HOC](https://youtu.be/KvVDXV9LQXc)
-[React Auth Intro](https://youtu.be/MwQrWyMByTM)
-[React Auth Part 2](https://youtu.be/PGATHvj878A)
+- [HOC](https://youtu.be/KvVDXV9LQXc)
+- [React Auth Intro](https://youtu.be/MwQrWyMByTM)
+- [React Auth Part 2](https://youtu.be/PGATHvj878A)
