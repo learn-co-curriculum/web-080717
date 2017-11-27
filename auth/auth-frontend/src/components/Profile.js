@@ -7,8 +7,9 @@ class Profile extends React.Component {
     localStorage.removeItem('jwt')
     this.props.logOutUser()
   }
-  
+
   render() {
+    console.log(process.env.REACT_APP_GOOGLE_PLACES_API)
     return (
       <div>
       <h1>Hello, {this.props.username}</h1>

@@ -8,7 +8,6 @@ function authorize(RenderedComponent){
 
     render() {
 
-
       if (localStorage.getItem('jwt') && this.props.location.pathname === "/login") {
 
         return <Redirect to="/"/>

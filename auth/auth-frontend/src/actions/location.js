@@ -24,3 +24,9 @@ export function setLocation(locationData) {
     payload: {latitude: locationData.coords.latitude, longitude: locationData.coords.longitude, }
   }
 }
+export function rewindLocationState(stateIndex) {
+  return {
+    type: "REWIND_LOCATION",
+    payload: stateIndex
+  }
+}
