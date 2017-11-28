@@ -7,7 +7,8 @@ class CreateStores < ActiveRecord::Migration[5.1]
       t.float :latitude
       t.float :longitude
       t.float :rating
-
+      t.string :types
+      
       t.timestamps
     end
   end

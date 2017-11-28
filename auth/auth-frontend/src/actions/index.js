@@ -1,6 +1,7 @@
 export function getLocation() {
   return dispatch => {
     dispatch(gettingLocation());
+
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         position => {
@@ -30,15 +31,18 @@ export function setLocation(locationData) {
 }
 
 export function getStores(coords) {
+  let lat = coords.coords.latitude;
+  let lng = coords.coords.longitude;
   return dispatch => {
     dispatch(gettingStores());
     fetch("http://localhost:3000/api/v1/stores", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
-      body: JSON.stringify({ coords })
+      body: JSON.stringify({ latitude: lat, longitude: lng })
     })
       .then(res => res.json())
       .then(json => dispatch(setStores(json)));
@@ -52,7 +56,7 @@ export function gettingStores() {
 }
 export function setStores(stores) {
   return {
-    type: "SET_LOCATION",
+    type: "SET_STORES",
     payload: stores
   };
 }
@@ -64,7 +68,8 @@ export function loginUser(username, password) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
       body: JSON.stringify({ user: { username, password } })
     })
@@ -86,7 +91,8 @@ export function signUpUser(username, password) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`
       },
       body: JSON.stringify({ user: { username, password } })
     })
@@ -131,7 +137,10 @@ export function getCurrentUser() {
       }
     })
       .then(response => response.json())
-      .then(userData => dispatch(setCurrentUser(userData)));
+      .then(userData => {
+        dispatch(setCurrentUser(userData));
+        dispatch(getLocation());
+      });
   };
 }
 

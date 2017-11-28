@@ -3,9 +3,8 @@ class Api::V1::StoresController < ApplicationController
 
   # GET /stores
   def index
-    byebug
-    @stores = Store.get_nearby_locations(coords)
 
+    @stores = Store.all
     render json: @stores
   end
 
@@ -16,7 +15,8 @@ class Api::V1::StoresController < ApplicationController
 
   # POST /stores
   def create
-    byebug
+    @stores = Store.all
+    render json: @stores
   end
 
   # PATCH/PUT /stores/1

@@ -18,7 +18,6 @@ class App extends React.Component {
     if (localStorage.getItem("jwt")) {
       this.props.getCurrentUser();
     }
-    this.props.getLocation();
   }
 
   render() {
